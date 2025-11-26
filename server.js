@@ -3,7 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import productRoutes from "./routes/product.routes.js";
-
+import authRoutes from "./routes/auth.route.js";
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -19,6 +19,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/products", productRoutes);
+app.use("/api/auth", authRoutes);
 
 mongoose
   .connect(process.env.MONGO_URI)
